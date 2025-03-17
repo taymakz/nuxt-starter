@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { ClientOnly } from '#components';
-
-
 </script>
 
 <template>

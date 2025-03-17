@@ -14,20 +14,10 @@ export default defineNuxtConfig({
     '@vee-validate/nuxt',
     './app/modules/shadcn',
   ],
-  imports: {
-    dirs: [
-      // scan all modules
-      'composables/**',
-    ],
-  },
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   app: {
     head: {
       viewport: 'width=device-width,initial-scale=1',
-      titleTemplate: `%s %separator ${appTitle}`,
-      templateParams: {
-        separator: '|',
-      },
       htmlAttrs: {
         dir: 'rtl',
         lang: 'fa-IR',
@@ -69,26 +59,7 @@ export default defineNuxtConfig({
     ],
   },
   dayjs: {
-    locales: ['fa'],
     plugins: ['relativeTime', 'timezone'],
-    defaultLocale: ['fa', {
-      relativeTime: {
-        future: 'در %s',
-        past: '%s قبل',
-        s: 'چند ثانیه',
-        m: 'یک دقیقه',
-        mm: '%d دقیقه',
-        h: 'یک ساعت',
-        hh: '%d ساعت',
-        d: 'یک روز',
-        dd: '%d روز',
-        M: 'یک ماه',
-        MM: '%d ماه',
-        y: 'یک سال',
-        yy: '%d سال',
-      },
-    }],
-    defaultTimezone: 'Asia/Tehran',
   },
   eslint: {
     config: {
