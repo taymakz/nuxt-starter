@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from 'radix-vue'
+import type { PrimitiveProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
 import type { ButtonVariants } from '.'
 import { cn } from '@/utils/cn'
-import { Primitive } from 'radix-vue'
+import { Primitive } from 'reka-ui'
 import { buttonVariants } from '.'
 
 interface Props extends PrimitiveProps {
@@ -12,6 +12,7 @@ interface Props extends PrimitiveProps {
   class?: HTMLAttributes['class']
   loading?: boolean
   hideContentOnLoading?: boolean
+  disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -24,7 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
     :as="as"
     :as-child="asChild"
     :class="cn(buttonVariants({ variant, size }), props.class)"
-    :disabled="loading || $attrs.disabled"
+    :disabled="loading || $props.disabled"
   >
     <slot v-if="!loading || (loading && !hideContentOnLoading)" />
     <LucideLoader2 v-show="loading" class="size-4.5 animate-spin" />

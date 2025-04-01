@@ -12,13 +12,16 @@ const props = defineProps<ToasterProps>()
     :toast-options="{
       classes: {
         toast:
-          'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg',
+          'group toast !safe-top group-[.toaster]:!bg-card group-[.toaster]:text-card-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg !rounded-2xl',
         description: 'font-iranyekan group-[.toast]:text-muted-foreground',
         actionButton:
           'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground font-iranyekan',
         cancelButton:
-          'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground',
+          'group-[.toast]:bg-sc-backround group-[.toast]:text-muted-foreground',
         title: 'font-iranyekan',
+        success: '!text-success',
+        warning: '!text-alert',
+        error: '!text-warning',
       },
     }"
   />

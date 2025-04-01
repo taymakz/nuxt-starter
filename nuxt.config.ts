@@ -1,9 +1,10 @@
 import tailwindcss from '@tailwindcss/vite'
-import { appDescription, appTitle } from './app/constants'
+import { appDescription } from './app/constants'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
+    './app/modules/shadcn',
     'motion-v/nuxt',
     '@vueuse/nuxt',
     '@nuxtjs/color-mode',
@@ -12,9 +13,8 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'dayjs-nuxt',
     '@vee-validate/nuxt',
-    './app/modules/shadcn',
   ],
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   app: {
     head: {
       viewport: 'width=device-width,initial-scale=1',
@@ -74,8 +74,6 @@ export default defineNuxtConfig({
       'Inter': [400, 500],
       'DM Mono': [400, 500],
       'Roboto Condensed': [400, 500],
-      'Bad Script': [400, 500],
-
     },
   },
 })
