@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'dayjs-nuxt',
     '@vee-validate/nuxt',
+        '@pinia/nuxt',
   ],
   devtools: { enabled: false },
   app: {
