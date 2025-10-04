@@ -22,6 +22,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from '~/components/ui/h
 import { Input, InputPassword } from '~/components/ui/input'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from '~/components/ui/input-group'
 import { InputOtp } from '~/components/ui/input-otp'
+import { Item, ItemActions, ItemContent, ItemDescription, ItemFooter, ItemGroup, ItemHeader, ItemMedia, ItemSeparator, ItemTitle } from '~/components/ui/item'
 import { Label } from '~/components/ui/label'
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationNext, PaginationPrevious } from '~/components/ui/pagination'
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover'
@@ -44,6 +45,67 @@ const tabs = [
   { title: 'Tab 1', value: 'tab1' },
   { title: 'Tab 2', value: 'tab2' },
   { title: 'Tab 3', value: 'tab3' },
+]
+
+// Item Examples Data
+const people = [
+  {
+    username: 'shadcn',
+    avatar: 'https://github.com/shadcn.png',
+    email: 'shadcn@vercel.com',
+  },
+  {
+    username: 'maxleiter',
+    avatar: 'https://github.com/maxleiter.png',
+    email: 'maxleiter@vercel.com',
+  },
+  {
+    username: 'evilrabbit',
+    avatar: 'https://github.com/evilrabbit.png',
+    email: 'evilrabbit@vercel.com',
+  },
+]
+
+const music = [
+  {
+    title: 'Midnight City Lights',
+    artist: 'Neon Dreams',
+    album: 'Electric Nights',
+    duration: '3:45',
+  },
+  {
+    title: 'Coffee Shop Conversations',
+    artist: 'The Morning Brew',
+    album: 'Urban Stories',
+    duration: '4:05',
+  },
+  {
+    title: 'Digital Rain',
+    artist: 'Cyber Symphony',
+    album: 'Binary Beats',
+    duration: '3:30',
+  },
+]
+
+const models = [
+  {
+    name: 'v0-1.5-sm',
+    description: 'Everyday tasks and UI generation.',
+    image: 'https://images.unsplash.com/photo-1650804068570-7fb2e3dbf888?q=80&w=640&auto=format&fit=crop',
+    credit: 'Valeria Reverdo on Unsplash',
+  },
+  {
+    name: 'v0-1.5-lg',
+    description: 'Advanced thinking or reasoning.',
+    image: 'https://images.unsplash.com/photo-1610280777472-54133d004c8c?q=80&w=640&auto=format&fit=crop',
+    credit: 'Michael Oeser on Unsplash',
+  },
+  {
+    name: 'v0-2.0-mini',
+    description: 'Open Source model for everyone.',
+    image: 'https://images.unsplash.com/photo-1602146057681-08560aee8cde?q=80&w=640&auto=format&fit=crop',
+    credit: 'Cherry Laithang on Unsplash',
+  },
 ]
 
 function showToast() {
@@ -634,6 +696,426 @@ function showToast() {
                 </TooltipProvider>
               </InputGroupAddon>
             </InputGroup>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+
+    <!-- Item Examples -->
+    <Card>
+      <CardHeader>
+        <CardTitle>Item</CardTitle>
+        <CardDescription>A versatile component that you can use to display any content</CardDescription>
+      </CardHeader>
+      <CardContent class="space-y-6">
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Variants
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Item>
+              <ItemMedia variant="icon">
+                <Star />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Default Item</ItemTitle>
+                <ItemDescription>This is a default item variant.</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button variant="outline" size="sm">
+                  Action
+                </Button>
+              </ItemActions>
+            </Item>
+            <Item variant="outline">
+              <ItemMedia variant="icon">
+                <Info />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Outline Item</ItemTitle>
+                <ItemDescription>This is an outline item variant.</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button variant="outline" size="sm">
+                  Action
+                </Button>
+              </ItemActions>
+            </Item>
+            <Item variant="muted">
+              <ItemMedia variant="icon">
+                <HelpCircle />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Muted Item</ItemTitle>
+                <ItemDescription>This is a muted item variant.</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button variant="outline" size="sm">
+                  Action
+                </Button>
+              </ItemActions>
+            </Item>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Size
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Item size="default">
+              <ItemMedia variant="icon">
+                <Star />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Default Size</ItemTitle>
+                <ItemDescription>This is the default size item.</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button variant="outline" size="sm">
+                  Action
+                </Button>
+              </ItemActions>
+            </Item>
+            <Item size="sm">
+              <ItemMedia variant="icon">
+                <Star />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Small Size</ItemTitle>
+                <ItemDescription>This is a small size item.</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button variant="outline" size="sm">
+                  Action
+                </Button>
+              </ItemActions>
+            </Item>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Icon
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Item>
+              <ItemMedia variant="icon">
+                <Mail />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Mail</ItemTitle>
+                <ItemDescription>Check your inbox for new messages.</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button variant="outline" size="sm">
+                  Open
+                </Button>
+              </ItemActions>
+            </Item>
+            <Item>
+              <ItemMedia variant="icon">
+                <CreditCard />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Payment</ItemTitle>
+                <ItemDescription>Manage your payment methods.</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button variant="outline" size="sm">
+                  Edit
+                </Button>
+              </ItemActions>
+            </Item>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Avatar
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Item>
+              <ItemMedia>
+                <Avatar>
+                  <AvatarImage src="https://github.com/shadcn.png" />
+                  <AvatarFallback>SC</AvatarFallback>
+                </Avatar>
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>shadcn</ItemTitle>
+                <ItemDescription>@shadcn</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button variant="outline" size="sm">
+                  Follow
+                </Button>
+              </ItemActions>
+            </Item>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Image
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Item>
+              <ItemMedia variant="image">
+                <img src="https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?w=300&h=300&fit=crop&crop=face" alt="Sample">
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Sample Image</ItemTitle>
+                <ItemDescription>A beautiful sample image.</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button variant="outline" size="sm">
+                  View
+                </Button>
+              </ItemActions>
+            </Item>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Group
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <ItemGroup>
+              <Item>
+                <ItemMedia variant="icon">
+                  <Mail />
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle>Inbox</ItemTitle>
+                  <ItemDescription>5 unread messages</ItemDescription>
+                </ItemContent>
+                <ItemActions>
+                  <Button variant="outline" size="sm">
+                    Open
+                  </Button>
+                </ItemActions>
+              </Item>
+              <ItemSeparator />
+              <Item>
+                <ItemMedia variant="icon">
+                  <Star />
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle>Starred</ItemTitle>
+                  <ItemDescription>12 starred items</ItemDescription>
+                </ItemContent>
+                <ItemActions>
+                  <Button variant="outline" size="sm">
+                    View
+                  </Button>
+                </ItemActions>
+              </Item>
+              <ItemSeparator />
+              <Item>
+                <ItemMedia variant="icon">
+                  <GitBranch />
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle>Projects</ItemTitle>
+                  <ItemDescription>3 active projects</ItemDescription>
+                </ItemContent>
+                <ItemActions>
+                  <Button variant="outline" size="sm">
+                    Manage
+                  </Button>
+                </ItemActions>
+              </Item>
+            </ItemGroup>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Header
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Item>
+              <ItemHeader>
+                <ItemTitle>Section Title</ItemTitle>
+                <Badge>Featured</Badge>
+              </ItemHeader>
+              <ItemMedia variant="icon">
+                <Info />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Item with Header</ItemTitle>
+                <ItemDescription>This item has a custom header section.</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button variant="outline" size="sm">
+                  Learn More
+                </Button>
+              </ItemActions>
+            </Item>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Link
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Item as-child>
+              <a href="#" class="cursor-pointer">
+                <ItemMedia variant="icon">
+                  <ArrowUpRight />
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle>Dashboard</ItemTitle>
+                  <ItemDescription>Overview of your account and activity.</ItemDescription>
+                </ItemContent>
+                <ItemActions>
+                  <Button variant="outline" size="sm">
+                    Go
+                  </Button>
+                </ItemActions>
+              </a>
+            </Item>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Dropdown
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <DropdownMenu>
+              <DropdownMenuTrigger as-child>
+                <Item class="cursor-pointer">
+                  <ItemMedia variant="icon">
+                    <ChevronDown />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>Account</ItemTitle>
+                    <ItemDescription>Manage your account settings</ItemDescription>
+                  </ItemContent>
+                  <ItemActions>
+                    <Button variant="outline" size="sm">
+                      Open
+                    </Button>
+                  </ItemActions>
+                </Item>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>
+                  <Mail class="mr-2 h-4 w-4" />
+                  Messages
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Star class="mr-2 h-4 w-4" />
+                  Favorites
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <ArrowLeft class="mr-2 h-4 w-4" />
+                  Logout
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            People List
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <ItemGroup>
+              <Item
+                v-for="(person, index) in people"
+                :key="person.username"
+              >
+                <ItemMedia>
+                  <Avatar>
+                    <AvatarImage :src="person.avatar" class="grayscale" />
+                    <AvatarFallback>{{ person.username.charAt(0) }}</AvatarFallback>
+                  </Avatar>
+                </ItemMedia>
+                <ItemContent class="gap-1">
+                  <ItemTitle>{{ person.username }}</ItemTitle>
+                  <ItemDescription>{{ person.email }}</ItemDescription>
+                </ItemContent>
+                <ItemActions>
+                  <Button variant="ghost" size="icon" class="rounded-full">
+                    <Plus />
+                  </Button>
+                </ItemActions>
+                <template v-if="index !== people.length - 1">
+                  <ItemSeparator />
+                </template>
+              </Item>
+            </ItemGroup>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Music Playlist
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <ItemGroup class="gap-4">
+              <Item
+                v-for="song in music"
+                :key="song.title"
+                variant="outline"
+                as-child
+                role="listitem"
+              >
+                <a href="#" class="cursor-pointer">
+                  <ItemMedia variant="image">
+                    <img
+                      :src="`https://avatar.vercel.sh/${encodeURIComponent(song.title)}`"
+                      :alt="song.title"
+                      class="w-8 h-8 object-cover grayscale rounded-sm"
+                    >
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle class="line-clamp-1">
+                      {{ song.title }} -
+                      <span class="text-muted-foreground">{{ song.album }}</span>
+                    </ItemTitle>
+                    <ItemDescription>{{ song.artist }}</ItemDescription>
+                  </ItemContent>
+                  <ItemContent class="flex-none text-center">
+                    <ItemDescription>{{ song.duration }}</ItemDescription>
+                  </ItemContent>
+                </a>
+              </Item>
+            </ItemGroup>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Model Cards
+          </h3>
+          <div class="grid w-full max-w-xl gap-4">
+            <ItemGroup class="grid grid-cols-3 gap-4">
+              <Item
+                v-for="model in models"
+                :key="model.name"
+                variant="outline"
+              >
+                <ItemHeader>
+                  <img
+                    :src="model.image"
+                    :alt="model.name"
+                    class="aspect-square w-full rounded-sm object-cover"
+                  >
+                </ItemHeader>
+                <ItemContent>
+                  <ItemTitle>{{ model.name }}</ItemTitle>
+                  <ItemDescription>{{ model.description }}</ItemDescription>
+                </ItemContent>
+              </Item>
+            </ItemGroup>
           </div>
         </div>
       </CardContent>

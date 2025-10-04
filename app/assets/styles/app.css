@@ -37,8 +37,8 @@
   --color-border-lighter: hsla(0, 0%, 62%, 45%);
   --color-primary: hsl(220, 91%, 54%);
   --color-primary-foreground: hsl(0, 0%, 98%);
-  --color-secondary: hsl(0, 0%, 93.1%);
-  --color-secondary-foreground: hsl(0, 0%, 9%);
+  --color-secondary:  oklch(0.97 0 0);
+  --color-secondary-foreground:  oklch(0.205 0 0);
   --color-accent: hsla(0, 0%, 82%, 50%);
   --color-accent-foreground: hsl(0, 0%, 9%);
   --color-destructive: var(--color-red-600);
@@ -102,8 +102,8 @@
   --color-border-lighter: hsla(0, 0%, 40%, 30%);
   --color-primary: hsl(217, 92%, 76%);
   --color-primary-foreground: hsl(0, 0%, 9%);
-  --color-secondary: hsl(0, 0%, 12.9%);
-  --color-secondary-foreground: hsl(0, 0%, 92%);
+  --color-secondary:oklch(0.269 0 0);
+  --color-secondary-foreground: oklch(0.985 0 0);
   --color-accent: hsla(0, 0%, 40.9%, 30%);
   --color-accent-foreground: hsl(0, 0%, 90%);
   --color-destructive: var(--color-red-600);
