@@ -54,4 +54,13 @@ export default defineNuxtConfig({
       storageUrl: '',
     },
   },
+  routeRules: {
+    '/components': {
+      ssr: false,
+    },
+    '/date': {
+      ssr: false,
+    },
+
+  },
 })

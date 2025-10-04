@@ -1,66 +1,77 @@
 <script setup lang="ts">
-import {
-  formatPersianDateTime,
-  getCurrentDatePersian,
-  getCurrentTime,
-  getCurrentYearPersian,
-  getPersianWeekDayFromDays,
-  getPersianWeekName,
-  persianDateDiff,
-  persianWeekDays,
-  remainDayForSubscription,
-} from './utils/date'
+import { useTextDirection } from '@vueuse/core'
 
-// Reactive data
-const persianWeekName = getPersianWeekName()
-const currentTime = getCurrentTime()
-const currentDatePersian = getCurrentDatePersian()
-const currentYearPersian = getCurrentYearPersian()
-const persianDateDiffValue = persianDateDiff('1404/01/01', '1404/01/10')
-const persianWeekDayFromDays = getPersianWeekDayFromDays(5)
-const remainDays = JSON.stringify(remainDayForSubscription(new Date(Date.now() + 86400000)), null, 2) // 1 day from now
-const formattedDateTime = formatPersianDateTime(new Date())
+import { Toaster } from '@/components/ui/sonner'
+import { appDesktopStartMinWidth, appTitle } from './constants'
+import 'vue-sonner/style.css'
+
+const textDirection = useTextDirection({ initialValue: 'rtl' })
+const dir = computed(() => (textDirection.value === 'rtl' ? 'rtl' : 'ltr'))
+const color = useColorMode()
+const isDesktop = useMediaQuery(appDesktopStartMinWidth)
+
+useHead({
+  titleTemplate: (titleChunk) => {
+    // If the page has a title, use: "Page Title | {appTitle}"
+    // Otherwise, use the full {appTitle}
+    return titleChunk ? `${titleChunk} | ${appTitle}` : appTitle
+  },
+  templateParams: {
+    siteName: appTitle,
+    separator: '|',
+  },
+})
 </script>
 
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <h1>Persian Date Utilities Demo</h1>
-    <div>
-      <h2>Persian Week Days:</h2>
-      <p>{{ persianWeekDays }}</p>
-    </div>
-    <div>
-      <h2>Persian Week Name:</h2>
-      <p>{{ persianWeekName }}</p>
-    </div>
-    <div>
-      <h2>Current Time:</h2>
-      <p>{{ currentTime }}</p>
-    </div>
-    <div>
-      <h2>Current Date Persian:</h2>
-      <p>{{ currentDatePersian }}</p>
-    </div>
-    <div>
-      <h2>Current Year Persian:</h2>
-      <p>{{ currentYearPersian }}</p>
-    </div>
-    <div>
-      <h2>Persian Date Diff (1404/01/01 to 1404/01/10):</h2>
-      <p>{{ persianDateDiffValue }}</p>
-    </div>
-    <div>
-      <h2>Persian Week Day From Days (5 days from now):</h2>
-      <p>{{ persianWeekDayFromDays }}</p>
-    </div>
-    <div>
-      <h2>Remain Days for Subscription:</h2>
-      <p>{{ remainDays }}</p>
-    </div>
-    <div>
-      <h2>Format Persian Date Time:</h2>
-      <p>{{ formattedDateTime }}</p>
+    <NuxtLayout>
+      <NuxtLoadingIndicator :size="3" color="var(--color-primary)" />
+      <div class="h-full">
+        <NuxtPage />
+      </div>
+    </NuxtLayout>
+    <!-- Toast -->
+    <div class="fixed z-100">
+      <ClientOnly>
+        <Toaster
+          :theme="(color.value as 'dark') || 'light'"
+          :position="
+            !isDesktop
+              ? 'top-center'
+              : dir === 'rtl'
+                ? 'bottom-left'
+                : 'bottom-right'
+          "
+          close-button
+          rich-colors
+          :toast-options="{
+            style: {
+              padding: '24px 32px',
+              fontSize: '14px',
+              fontFamily: 'Vazir',
+            },
+            duration: 5000,
+          }"
+        />
+      </ClientOnly>
     </div>
   </div>
 </template>
+
+<style>
+.page-enter-active,
+.page-leave-active,
+.layout-enter-active,
+.layout-leave-active {
+  transition: all 0.2s;
+}
+
+.page-enter-from,
+.page-leave-to,
+.layout-enter-from,
+.layout-leave-to {
+  opacity: 0;
+}
+</style>

@@ -43,7 +43,7 @@
   --color-accent-foreground: hsl(0, 0%, 9%);
   --color-destructive: var(--color-red-600);
   --color-destructive-foreground: var(--color-white);
-  --color-input: hsl(0, 0%, 92%);
+  --color-input: oklch(0.92 0.004 286.32);
   --color-ring: hsl(0, 0%, 63.9%);
 
   --text-clamp-md: clamp(0.7rem, 3vw, 0.8rem);
@@ -79,6 +79,8 @@
   --vsbs-border-color: var(--color-border) / 0.125;
   --vsbs-padding-x: 16px;
   --vsbs-handle-background: var(--color-muted-foreground);
+
+  --radius: 0.65rem;
 }
 
 
@@ -107,7 +109,7 @@
   --color-destructive: var(--color-red-600);
   --color-destructive-foreground: var(--color-white);
   --color-ring: hsl(0, 0%, 54.9%);
-  --color-input: hsl(0, 0%, 7.04%);
+  --color-input: oklch(1 0 0 / 15%);
 
 }
 
