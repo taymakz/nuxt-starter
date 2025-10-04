@@ -23,6 +23,7 @@ import { Input, InputPassword } from '~/components/ui/input'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from '~/components/ui/input-group'
 import { InputOtp } from '~/components/ui/input-otp'
 import { Item, ItemActions, ItemContent, ItemDescription, ItemFooter, ItemGroup, ItemHeader, ItemMedia, ItemSeparator, ItemTitle } from '~/components/ui/item'
+import { Kbd, KbdGroup } from '~/components/ui/kbd'
 import { Label } from '~/components/ui/label'
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationNext, PaginationPrevious } from '~/components/ui/pagination'
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover'
@@ -1116,6 +1117,117 @@ function showToast() {
                 </ItemContent>
               </Item>
             </ItemGroup>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+
+    <!-- Kbd Examples -->
+    <Card>
+      <CardHeader>
+        <CardTitle>Kbd</CardTitle>
+        <CardDescription>Used to display textual user input from keyboard</CardDescription>
+      </CardHeader>
+      <CardContent class="space-y-6">
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Basic
+          </h3>
+          <div class="flex items-center gap-4">
+            <Kbd>Ctrl</Kbd>
+            <Kbd>⌘</Kbd>
+            <Kbd>⇧</Kbd>
+            <Kbd>⌥</Kbd>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Group
+          </h3>
+          <div class="flex flex-col items-center gap-4">
+            <p class="text-muted-foreground text-sm">
+              Use
+              <KbdGroup>
+                <Kbd>Ctrl + B</Kbd>
+                <Kbd>Ctrl + K</Kbd>
+              </KbdGroup>
+              to open the command palette
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Button
+          </h3>
+          <div class="flex flex-wrap items-center gap-4">
+            <Button variant="outline" size="sm" class="pr-2">
+              Accept <Kbd>⏎</Kbd>
+            </Button>
+            <Button variant="outline" size="sm" class="pr-2">
+              Cancel <Kbd>Esc</Kbd>
+            </Button>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Tooltip
+          </h3>
+          <div class="flex flex-wrap gap-4">
+            <ButtonGroup>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger as-child>
+                    <Button size="sm" variant="outline">
+                      Save
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <div class="flex items-center gap-2">
+                      Save Changes <Kbd>S</Kbd>
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger as-child>
+                    <Button size="sm" variant="outline">
+                      Print
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <div class="flex items-center gap-2">
+                      Print Document
+                      <KbdGroup>
+                        <Kbd>Ctrl</Kbd>
+                        <Kbd>P</Kbd>
+                      </KbdGroup>
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </ButtonGroup>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Input Group
+          </h3>
+          <div class="flex w-full max-w-xs flex-col gap-6">
+            <InputGroup>
+              <InputGroupInput placeholder="Search..." />
+              <InputGroupAddon>
+                <Search />
+              </InputGroupAddon>
+              <InputGroupAddon align="inline-end">
+                <Kbd>⌘</Kbd>
+                <Kbd>K</Kbd>
+              </InputGroupAddon>
+            </InputGroup>
           </div>
         </div>
       </CardContent>
