@@ -12,7 +12,7 @@ import DialogTrigger from '../dialog/DialogTrigger.vue'
 import '@douxcode/vue-spring-bottom-sheet/dist/style.css'
 
 interface Props {
-  open: boolean
+  open?: boolean
   class?: string
 }
 
@@ -66,9 +66,9 @@ const isDesktop = useMediaQuery(appDesktopStartMinWidth)
         <slot name="default" />
       </div>
       <template v-if="$slots.footer" #footer>
-        <div class="bg-accent border-t">
+     
           <slot name="footer" />
-        </div>
+      
       </template>
     </BottomSheet>
   </ClientOnly>

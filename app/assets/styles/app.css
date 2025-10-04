@@ -191,7 +191,7 @@
   }
   /* BottomSheet Footer class */
   [data-vsbs-footer] {
-    @apply bg-secondary/50 border-t;
+    @apply bg-secondary/50  border-t;
   }
   [data-vsbs-header]{
     @apply before:!w-20 before:!h-1 before:!bg-muted-foreground

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeft, ArrowUpRight, Check, ChevronDown, Copy, CreditCard, GitBranch, HelpCircle, Info, Loader2, Mail, Minus, Plus, RefreshCw, RotateCcw, Search, Star } from 'lucide-vue-next'
+import { ArrowLeft, ArrowUpRight, Bell, Check, ChevronDown, Cloud, Copy, CreditCard, GitBranch, HelpCircle, Info, Loader2, Mail, Minus, Plus, RefreshCw, RotateCcw, Search, Star } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { toast } from 'vue-sonner'
 
@@ -18,6 +18,7 @@ import { Checkbox } from '~/components/ui/checkbox'
 import DatepickerJalali from '~/components/ui/datepicker-jalali/DatepickerJalali.vue'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '~/components/ui/dialog'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '~/components/ui/dropdown-menu'
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '~/components/ui/empty'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '~/components/ui/hover-card'
 import { Input, InputPassword } from '~/components/ui/input'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from '~/components/ui/input-group'
@@ -27,6 +28,8 @@ import { Kbd, KbdGroup } from '~/components/ui/kbd'
 import { Label } from '~/components/ui/label'
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationNext, PaginationPrevious } from '~/components/ui/pagination'
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover'
+import ResponsiveAlertDialog from '~/components/ui/responsive/AlertDialog.vue'
+import ResponsiveDialog from '~/components/ui/responsive/Dialog.vue'
 import { RestText } from '~/components/ui/rest-text'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select'
 import { Skeleton } from '~/components/ui/skeleton'
@@ -1233,6 +1236,190 @@ function showToast() {
       </CardContent>
     </Card>
 
+    <!-- Empty Examples -->
+    <Card>
+      <CardHeader>
+        <CardTitle>Empty</CardTitle>
+        <CardDescription>Use the Empty component to display an empty state</CardDescription>
+      </CardHeader>
+      <CardContent class="space-y-6">
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Basic
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Empty>
+              <EmptyHeader>
+                <EmptyMedia variant="icon">
+                  <Cloud />
+                </EmptyMedia>
+                <EmptyTitle>No data</EmptyTitle>
+                <EmptyDescription>No data found</EmptyDescription>
+              </EmptyHeader>
+              <EmptyContent>
+                <Button>Add data</Button>
+              </EmptyContent>
+            </Empty>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Outline
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Empty class="border border-dashed">
+              <EmptyHeader>
+                <EmptyMedia variant="icon">
+                  <Cloud />
+                </EmptyMedia>
+                <EmptyTitle>Cloud Storage Empty</EmptyTitle>
+                <EmptyDescription>
+                  Upload files to your cloud storage to access them anywhere.
+                </EmptyDescription>
+              </EmptyHeader>
+              <EmptyContent>
+                <Button variant="outline" size="sm">
+                  Upload Files
+                </Button>
+              </EmptyContent>
+            </Empty>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Background
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Empty class="from-muted/50 to-background h-full bg-gradient-to-b from-30%">
+              <EmptyHeader>
+                <EmptyMedia variant="icon">
+                  <Bell />
+                </EmptyMedia>
+                <EmptyTitle>No Notifications</EmptyTitle>
+                <EmptyDescription>
+                  You're all caught up. New notifications will appear here.
+                </EmptyDescription>
+              </EmptyHeader>
+              <EmptyContent>
+                <Button variant="outline" size="sm">
+                  <RotateCcw class="mr-2 h-4 w-4" />
+                  Refresh
+                </Button>
+              </EmptyContent>
+            </Empty>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Avatar
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Empty>
+              <EmptyHeader>
+                <EmptyMedia variant="default">
+                  <Avatar class="size-12">
+                    <AvatarImage
+                      src="https://github.com/shadcn.png"
+                      class="grayscale"
+                    />
+                    <AvatarFallback>LR</AvatarFallback>
+                  </Avatar>
+                </EmptyMedia>
+                <EmptyTitle>User Offline</EmptyTitle>
+                <EmptyDescription>
+                  This user is currently offline. You can leave a message to notify them
+                  or try again later.
+                </EmptyDescription>
+              </EmptyHeader>
+              <EmptyContent>
+                <Button size="sm">
+                  Leave Message
+                </Button>
+              </EmptyContent>
+            </Empty>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Avatar Group
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Empty>
+              <EmptyHeader>
+                <EmptyMedia>
+                  <div class="[&_[data-slot=avatar]]:ring-background flex -space-x-2 [&_[data-slot=avatar]]:size-12 [&_[data-slot=avatar]]:ring-2 [&_[data-slot=avatar]]:grayscale">
+                    <Avatar>
+                      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                    <Avatar>
+                      <AvatarImage
+                        src="https://github.com/maxleiter.png"
+                        alt="@maxleiter"
+                      />
+                      <AvatarFallback>LR</AvatarFallback>
+                    </Avatar>
+                    <Avatar>
+                      <AvatarImage
+                        src="https://github.com/evilrabbit.png"
+                        alt="@evilrabbit"
+                      />
+                      <AvatarFallback>ER</AvatarFallback>
+                    </Avatar>
+                  </div>
+                </EmptyMedia>
+                <EmptyTitle>No Team Members</EmptyTitle>
+                <EmptyDescription>
+                  Invite your team to collaborate on this project.
+                </EmptyDescription>
+              </EmptyHeader>
+              <EmptyContent>
+                <Button size="sm">
+                  <Plus class="mr-2 h-4 w-4" />
+                  Invite Members
+                </Button>
+              </EmptyContent>
+            </Empty>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Input Group
+          </h3>
+          <div class="grid w-full max-w-md gap-4">
+            <Empty>
+              <EmptyHeader>
+                <EmptyTitle>404 - Not Found</EmptyTitle>
+                <EmptyDescription>
+                  The page you're looking for doesn't exist. Try searching for
+                  what you need below.
+                </EmptyDescription>
+              </EmptyHeader>
+              <EmptyContent>
+                <InputGroup class="sm:w-3/4">
+                  <InputGroupInput placeholder="Try searching for pages..." />
+                  <InputGroupAddon>
+                    <Search />
+                  </InputGroupAddon>
+                  <InputGroupAddon align="inline-end">
+                    <Kbd>/</Kbd>
+                  </InputGroupAddon>
+                </InputGroup>
+                <EmptyDescription>
+                  Need help? <a href="#" class="cursor-pointer">Contact support</a>
+                </EmptyDescription>
+              </EmptyContent>
+            </Empty>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+
     <!-- Checkbox Example -->
     <Card>
       <CardHeader>
@@ -1375,6 +1562,174 @@ function showToast() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
+      </CardContent>
+    </Card>
+
+    <!-- Responsive Dialog Examples -->
+    <Card>
+      <CardHeader>
+        <CardTitle>Responsive Dialog</CardTitle>
+        <CardDescription>Dialog that adapts to screen size - modal on desktop, bottom sheet on mobile</CardDescription>
+      </CardHeader>
+      <CardContent class="space-y-6">
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Basic Dialog
+          </h3>
+          <div class="flex flex-wrap gap-4">
+            <ResponsiveDialog >
+              <template #trigger>
+                <Button variant="outline">
+                  Open Dialog
+                </Button>
+              </template>
+              <template #title>
+                Edit Profile
+              </template>
+              <template #description>
+                Make changes to your profile here. Click save when you're done.
+              </template>
+              <div class="space-y-4 py-4">
+                <div class="space-y-2">
+                  <Label for="name">Name</Label>
+                  <Input id="name" placeholder="Enter your name" />
+                </div>
+                <div class="space-y-2">
+                  <Label for="email">Email</Label>
+                  <Input id="email" type="email" placeholder="Enter your email" />
+                </div>
+              </div>
+              <template #footer>
+                <Button type="submit">
+                  Save changes
+                </Button>
+              </template>
+            </ResponsiveDialog>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Form Dialog
+          </h3>
+          <div class="flex flex-wrap gap-4">
+            <ResponsiveDialog>
+              <template #trigger>
+                <Button>Add Project</Button>
+              </template>
+              <template #title>
+                Create New Project
+              </template>
+              <template #description>
+                Add a new project to get started with your work.
+              </template>
+              <div class="space-y-4 py-4">
+                <div class="space-y-2">
+                  <Label for="project-name">Project Name</Label>
+                  <Input id="project-name" placeholder="My Awesome Project" />
+                </div>
+                <div class="space-y-2">
+                  <Label for="project-description">Description</Label>
+                  <Textarea
+                    id="project-description"
+                    placeholder="Describe your project..."
+                    class="min-h-[80px]"
+                  />
+                </div>
+                <div class="space-y-2">
+                  <Label for="project-type">Type</Label>
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select project type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="personal">
+                        Personal
+                      </SelectItem>
+                      <SelectItem value="work">
+                        Work
+                      </SelectItem>
+                      <SelectItem value="education">
+                        Education
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <template #footer>
+                <Button variant="outline" class="mr-2">
+                  Cancel
+                </Button>
+                <Button type="submit">
+                  Create Project
+                </Button>
+              </template>
+            </ResponsiveDialog>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+
+    <!-- Responsive Alert Dialog Examples -->
+    <Card>
+      <CardHeader>
+        <CardTitle>Responsive Alert Dialog</CardTitle>
+        <CardDescription>Alert dialog that adapts to screen size - modal on desktop, bottom sheet on mobile</CardDescription>
+      </CardHeader>
+      <CardContent class="space-y-6">
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Basic Alert
+          </h3>
+          <div class="flex flex-wrap gap-4">
+            <ResponsiveAlertDialog
+              title="Are you sure?"
+              description="This action cannot be undone. This will permanently delete your account and remove your data from our servers."
+              @confirm="showToast()"
+            >
+              <Button variant="destructive">
+                Delete Account
+              </Button>
+            </ResponsiveAlertDialog>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Confirmation with Text Input
+          </h3>
+          <div class="flex flex-wrap gap-4">
+            <ResponsiveAlertDialog
+              title="Delete Project"
+              description="This will permanently delete the project and all associated data. This action cannot be undone."
+              confirm-text="delete project"
+              @confirm="showToast()"
+            >
+              <Button variant="destructive">
+                Delete Project
+              </Button>
+            </ResponsiveAlertDialog>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">
+            Loading State
+          </h3>
+          <div class="flex flex-wrap gap-4">
+            <ResponsiveAlertDialog
+              title="Publishing Changes"
+              description="Please wait while we publish your changes to production."
+              :confirm-loading="true"
+              @confirm="showToast()"
+            >
+              <Button disabled>
+                <RotateCcw class="mr-2 h-4 w-4 animate-spin" />
+                Publishing...
+              </Button>
+            </ResponsiveAlertDialog>
+          </div>
+        </div>
       </CardContent>
     </Card>
 

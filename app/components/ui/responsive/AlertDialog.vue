@@ -111,8 +111,13 @@ function handleOpenChange(value: boolean) {
     </template>
     <div class="p-4">
       <div v-if="confirmText" class="mt-4 space-y-2">
-        <p class="text-muted-foreground text-sm">
+        <!-- Persian -->
+        <p class="ltr:hidden rtl:block text-muted-foreground text-sm ">
           برای تایید، متن "<span class="font-semibold">{{ confirmText }}</span>" را وارد کنید:
+        </p>
+        <!-- English -->
+        <p class="ltr:block rtl:hidden text-muted-foreground text-sm ">
+          To confirm, type "<span class="font-semibold">{{ confirmText }}</span>":
         </p>
         <Input
           v-model="confirmInput"
