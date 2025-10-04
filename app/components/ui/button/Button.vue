@@ -3,6 +3,7 @@ import type { PrimitiveProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
 import type { ButtonVariants } from '.'
 import { Primitive } from 'reka-ui'
+import { Spinner } from '@/components/ui/spinner'
 import { cn } from '@/utils/cn'
 import { buttonVariants } from '.'
 
@@ -28,6 +29,6 @@ const props = withDefaults(defineProps<Props>(), {
     :disabled="loading || $props.disabled"
   >
     <slot v-if="!loading || (loading && !hideContentOnLoading)" />
-    <LucideLoader2 v-show="loading" class="size-4.5 animate-spin" />
+    <Spinner v-show="loading" class="size-4.5" />
   </Primitive>
 </template>
