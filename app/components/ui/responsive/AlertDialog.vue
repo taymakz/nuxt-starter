@@ -70,10 +70,15 @@ function handleOpenChange(value: boolean) {
       </AlertDialogHeader>
 
       <div v-if="confirmText" class="space-y-2 px-6">
-        <p class="text-muted-foreground text-sm">
-          برای تایید، متن "<span class="font-semibold">{{ confirmText }}</span>" را وارد کنید:
+        <!-- Persian -->
+        <p class="ltr:hidden rtl:block text-muted-foreground text-sm ">
+          برای تایید، متن "<span class="font-semibold">{{ confirmText }}</span>" را وارد کنید
         </p>
-        <InputSecondary
+        <!-- English -->
+        <p class="ltr:block rtl:hidden text-muted-foreground text-sm ">
+          To confirm, type "<span class="font-semibold">{{ confirmText }}</span>"
+        </p>
+        <Input
           v-model="confirmInput"
           :placeholder="confirmText"
           autofocus
@@ -113,11 +118,11 @@ function handleOpenChange(value: boolean) {
       <div v-if="confirmText" class="mt-4 space-y-2">
         <!-- Persian -->
         <p class="ltr:hidden rtl:block text-muted-foreground text-sm ">
-          برای تایید، متن "<span class="font-semibold">{{ confirmText }}</span>" را وارد کنید:
+          برای تایید، متن "<span class="font-semibold">{{ confirmText }}</span>" را وارد کنید
         </p>
         <!-- English -->
         <p class="ltr:block rtl:hidden text-muted-foreground text-sm ">
-          To confirm, type "<span class="font-semibold">{{ confirmText }}</span>":
+          To confirm, type "<span class="font-semibold">{{ confirmText }}</span>"
         </p>
         <Input
           v-model="confirmInput"
