@@ -71,18 +71,14 @@ function handleOpenChange(value: boolean) {
 
       <div v-if="confirmText" class="space-y-2 px-6">
         <!-- Persian -->
-        <p class="ltr:hidden rtl:block text-muted-foreground text-sm ">
+        <p class="text-muted-foreground text-sm ltr:hidden rtl:block">
           برای تایید، متن "<span class="font-semibold">{{ confirmText }}</span>" را وارد کنید
         </p>
         <!-- English -->
-        <p class="ltr:block rtl:hidden text-muted-foreground text-sm ">
+        <p class="text-muted-foreground text-sm ltr:block rtl:hidden">
           To confirm, type "<span class="font-semibold">{{ confirmText }}</span>"
         </p>
-        <Input
-          v-model="confirmInput"
-          :placeholder="confirmText"
-          autofocus
-        />
+        <Input v-model="confirmInput" :placeholder="confirmText" autofocus />
       </div>
 
       <AlertDialogFooter class="mt-4">
@@ -105,11 +101,15 @@ function handleOpenChange(value: boolean) {
     <slot name="default" />
   </div>
 
-  <BottomSheet v-if="!isDesktop" v-model="isOpen" @update:model-value="handleOpenChange">
+  <BottomSheet
+    v-if="!isDesktop"
+    v-model="isOpen"
+    @update:model-value="handleOpenChange"
+  >
     <template #header>
-      <div class="text-center mt-2">
+      <div class="mt-2 text-center">
         <h2>{{ title }}</h2>
-        <p class="text-sm text-muted-foreground mt-2">
+        <p class="text-muted-foreground mt-2 text-sm">
           {{ description }}
         </p>
       </div>
@@ -117,11 +117,11 @@ function handleOpenChange(value: boolean) {
     <div class="p-4">
       <div v-if="confirmText" class="mt-4 space-y-2">
         <!-- Persian -->
-        <p class="ltr:hidden rtl:block text-muted-foreground text-sm ">
+        <p class="text-muted-foreground text-sm ltr:hidden rtl:block">
           برای تایید، متن "<span class="font-semibold">{{ confirmText }}</span>" را وارد کنید
         </p>
         <!-- English -->
-        <p class="ltr:block rtl:hidden text-muted-foreground text-sm ">
+        <p class="text-muted-foreground text-sm ltr:block rtl:hidden">
           To confirm, type "<span class="font-semibold">{{ confirmText }}</span>"
         </p>
         <Input

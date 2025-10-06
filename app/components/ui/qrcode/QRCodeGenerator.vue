@@ -43,10 +43,7 @@ const qrCode = useQrcode(
 
 <template>
   <div class="flex items-center justify-center">
-    <div
-      class="overflow-hidden"
-      :style="{ borderRadius: `${borderRadius}px` }"
-    >
+    <div class="overflow-hidden" :style="{ borderRadius: `${borderRadius}px` }">
       <img
         :src="qrCode"
         alt="QR Code"

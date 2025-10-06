@@ -34,10 +34,21 @@ const colorPickerTarget = ref<'qr' | 'bg'>('qr')
 const selectedQRColor = ref('#89b5fa')
 const selectedBgColor = ref('#ffffff')
 const hasBackground = ref(false)
-const selectedVariant = ref<'default' | 'rounded' | 'circle' | 'pixelated' | 'dots'>('rounded')
+const selectedVariant = ref<
+  'default' | 'rounded' | 'circle' | 'pixelated' | 'dots'
+>('rounded')
 
 // Predefined colors
-const defaultColors = ['#89b5fa', '#1f66f4', '#000000', '#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#8B5CF6']
+const defaultColors = [
+  '#89b5fa',
+  '#1f66f4',
+  '#000000',
+  '#3B82F6',
+  '#EF4444',
+  '#10B981',
+  '#F59E0B',
+  '#8B5CF6',
+]
 const backgroundColors = [
   '#ffffff', // White
   '#f8f9fa', // Light gray
@@ -70,7 +81,8 @@ const qrBackgroundColor = computed(() => {
 // Functions
 function openCustomColorModal(target: 'qr' | 'bg') {
   colorPickerTarget.value = target
-  customColorInput.value = target === 'qr' ? selectedQRColor.value : selectedBgColor.value
+  customColorInput.value
+    = target === 'qr' ? selectedQRColor.value : selectedBgColor.value
   showCustomColorModal.value = true
 }
 
@@ -164,7 +176,9 @@ onMounted(() => {
         <div id="qr-canvas" class="flex justify-center">
           <div
             class="rounded-xl p-4"
-            :style="{ backgroundColor: hasBackground ? selectedBgColor : 'transparent' }"
+            :style="{
+              backgroundColor: hasBackground ? selectedBgColor : 'transparent',
+            }"
           >
             <QRCodeGenerator
               :key="`${selectedQRColor}-${selectedBgColor}-${hasBackground}-${selectedVariant}`"
@@ -185,12 +199,17 @@ onMounted(() => {
             <Label class="text-sm font-medium">نوع QR کد</Label>
             <div class="mt-2 flex flex-wrap gap-2">
               <button
-                v-for="variant in qrVariants" :key="variant.value"
-                class="px-3 py-2 rounded-lg border-2 text-sm font-medium transition-colors"
-                :class="selectedVariant === variant.value ? 'border-primary bg-primary/10 text-primary' : 'border-border hover:border-primary/50'"
+                v-for="variant in qrVariants"
+                :key="variant.value"
+                class="rounded-lg border-2 px-3 py-2 text-sm font-medium transition-colors"
+                :class="
+                  selectedVariant === variant.value
+                    ? 'border-primary bg-primary/10 text-primary'
+                    : 'border-border hover:border-primary/50'
+                "
                 @click="selectedVariant = variant.value"
               >
-                <span :class="`icon-[ph--${variant.icon}] size-4 mr-2`" />
+                <span :class="`icon-[ph--${variant.icon}] mr-2 size-4`" />
                 {{ variant.label }}
               </button>
             </div>
@@ -200,37 +219,55 @@ onMounted(() => {
             <Label class="text-sm font-medium">رنگ QR کد</Label>
             <div class="mt-2 flex flex-wrap gap-2">
               <button
-                v-for="color in availableColors" :key="color" class="size-8 rounded-full border-2"
-                :class="selectedQRColor === color ? 'border-primary' : 'border-border'"
-                :style="{ backgroundColor: color }" @click="selectedQRColor = color"
+                v-for="color in availableColors"
+                :key="color"
+                class="size-8 rounded-full border-2"
+                :class="
+                  selectedQRColor === color ? 'border-primary' : 'border-border'
+                "
+                :style="{ backgroundColor: color }"
+                @click="selectedQRColor = color"
               />
               <!-- Custom Color Button for QR -->
               <button
-                class="size-8 rounded-full border-2 border-dashed border-gray-400 flex items-center justify-center"
-                title="رنگ شخصی" @click="openCustomColorModal('qr')"
+                class="flex size-8 items-center justify-center rounded-full border-2 border-dashed border-gray-400"
+                title="رنگ شخصی"
+                @click="openCustomColorModal('qr')"
               >
                 <span class="icon-[ph--plus] size-4 text-gray-500" />
               </button>
             </div>
 
             <!-- Custom QR Color Dialog -->
-            <div v-if="showCustomColorModal && colorPickerTarget === 'qr'" class="mt-4 p-4 border rounded-lg">
+            <div
+              v-if="showCustomColorModal && colorPickerTarget === 'qr'"
+              class="mt-4 rounded-lg border p-4"
+            >
               <div class="space-y-3">
                 <div>
                   <Label class="text-sm font-medium">رنگ شخصی QR کد</Label>
-                  <div class="mt-2 flex gap-3 items-center">
+                  <div class="mt-2 flex items-center gap-3">
                     <input
-                      v-model="customColorInput" type="color"
-                      class="size-12 rounded-lg border cursor-pointer" :title="customColorInput"
+                      v-model="customColorInput"
+                      type="color"
+                      class="size-12 cursor-pointer rounded-lg border"
+                      :title="customColorInput"
                     >
                     <input
-                      v-model="customColorInput" type="text" class="flex-1 px-3 py-2 border rounded-lg"
-                      placeholder="#000000" pattern="^#[0-9A-Fa-f]{6}$"
+                      v-model="customColorInput"
+                      type="text"
+                      class="flex-1 rounded-lg border px-3 py-2"
+                      placeholder="#000000"
+                      pattern="^#[0-9A-Fa-f]{6}$"
                     >
                   </div>
                 </div>
                 <div class="flex gap-2">
-                  <Button variant="outline" size="sm" @click="closeCustomColorModal">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    @click="closeCustomColorModal"
+                  >
                     لغو
                   </Button>
                   <Button size="sm" @click="applyCustomColor">
@@ -246,20 +283,32 @@ onMounted(() => {
             <Label class="text-sm font-medium">پس زمینه</Label>
             <div class="mt-2 space-y-2">
               <label class="flex items-center gap-2">
-                <input v-model="hasBackground" type="checkbox" class="rounded">
+                <input
+                  v-model="hasBackground"
+                  type="checkbox"
+                  class="rounded"
+                >
                 <span class="text-sm">پس زمینه داشته باشد</span>
               </label>
 
               <div v-if="hasBackground" class="flex flex-wrap gap-2">
                 <button
-                  v-for="color in backgroundColors" :key="color" class="size-8 rounded-full border-2"
-                  :class="selectedBgColor === color ? 'border-primary' : 'border-border'"
-                  :style="{ backgroundColor: color }" @click="selectedBgColor = color"
+                  v-for="color in backgroundColors"
+                  :key="color"
+                  class="size-8 rounded-full border-2"
+                  :class="
+                    selectedBgColor === color
+                      ? 'border-primary'
+                      : 'border-border'
+                  "
+                  :style="{ backgroundColor: color }"
+                  @click="selectedBgColor = color"
                 />
                 <!-- Custom Color Button for Background -->
                 <button
-                  class="size-8 rounded-full border-2 border-dashed border-gray-400 flex items-center justify-center"
-                  title="رنگ شخصی" @click="openCustomColorModal('bg')"
+                  class="flex size-8 items-center justify-center rounded-full border-2 border-dashed border-gray-400"
+                  title="رنگ شخصی"
+                  @click="openCustomColorModal('bg')"
                 >
                   <span class="icon-[ph--plus] size-4 text-gray-500" />
                 </button>
@@ -267,25 +316,38 @@ onMounted(() => {
 
               <!-- Custom Background Color Dialog -->
               <div
-                v-if="showCustomColorModal && colorPickerTarget === 'bg' && hasBackground"
-                class="mt-4 p-4 border rounded-lg"
+                v-if="
+                  showCustomColorModal
+                    && colorPickerTarget === 'bg'
+                    && hasBackground
+                "
+                class="mt-4 rounded-lg border p-4"
               >
                 <div class="space-y-3">
                   <div>
                     <Label class="text-sm font-medium">رنگ شخصی پس زمینه</Label>
-                    <div class="mt-2 flex gap-3 items-center">
+                    <div class="mt-2 flex items-center gap-3">
                       <input
-                        v-model="customColorInput" type="color"
-                        class="size-12 rounded-lg border cursor-pointer" :title="customColorInput"
+                        v-model="customColorInput"
+                        type="color"
+                        class="size-12 cursor-pointer rounded-lg border"
+                        :title="customColorInput"
                       >
                       <input
-                        v-model="customColorInput" type="text" class="flex-1 px-3 py-2 border rounded-lg"
-                        placeholder="#ffffff" pattern="^#[0-9A-Fa-f]{6}$"
+                        v-model="customColorInput"
+                        type="text"
+                        class="flex-1 rounded-lg border px-3 py-2"
+                        placeholder="#ffffff"
+                        pattern="^#[0-9A-Fa-f]{6}$"
                       >
                     </div>
                   </div>
                   <div class="flex gap-2">
-                    <Button variant="outline" size="sm" @click="closeCustomColorModal">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      @click="closeCustomColorModal"
+                    >
                       لغو
                     </Button>
                     <Button size="sm" @click="applyCustomColor">

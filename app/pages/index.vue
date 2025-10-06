@@ -1,8 +1,7 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="container py-10 max-w-screen-xs">
+  <div class="max-w-screen-xs container py-10">
     hi
   </div>
 </template>

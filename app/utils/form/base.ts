@@ -70,14 +70,11 @@ export function createNullableMinNumber(
       }
       return Number(value)
     }, z.number().nullable())
-    .refine(
-      (value) => {
-        // Only validate when value is actually a number
-        if (value === null || value === undefined) {
-          return true // null/undefined values are valid (unlimited)
-        }
-        return value >= minValue
-      },
-      errorMessage,
-    )
+    .refine((value) => {
+      // Only validate when value is actually a number
+      if (value === null || value === undefined) {
+        return true // null/undefined values are valid (unlimited)
+      }
+      return value >= minValue
+    }, errorMessage)
 }

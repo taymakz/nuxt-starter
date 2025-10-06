@@ -14,7 +14,6 @@ const { activeTab, tabs } = defineProps<{
         <template v-for="tab in tabs" :key="tab.value">
           <motion.div
             v-if="activeTab === tab.value"
-
             :initial="{ opacity: 0, y: 10 }"
             :animate="{ opacity: 1, y: 0 }"
             :exit="{ opacity: 0, y: -10 }"

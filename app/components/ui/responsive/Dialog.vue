@@ -53,11 +53,11 @@ const isDesktop = useMediaQuery(appDesktopStartMinWidth)
   <ClientOnly>
     <BottomSheet v-if="!isDesktop" v-model="isOpen">
       <template #header>
-        <div class="text-center mt-2">
+        <div class="mt-2 text-center">
           <h2>
             <slot name="title" />
           </h2>
-          <p class="text-sm text-muted-foreground">
+          <p class="text-muted-foreground text-sm">
             <slot name="description" />
           </p>
         </div>
@@ -66,9 +66,7 @@ const isDesktop = useMediaQuery(appDesktopStartMinWidth)
         <slot name="default" />
       </div>
       <template v-if="$slots.footer" #footer>
-     
-          <slot name="footer" />
-      
+        <slot name="footer" />
       </template>
     </BottomSheet>
   </ClientOnly>

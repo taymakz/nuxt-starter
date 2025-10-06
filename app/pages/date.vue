@@ -6,13 +6,17 @@ const currentDatePersian = getCurrentDatePersian()
 const currentYearPersian = getCurrentYearPersian()
 const persianDateDiffValue = persianDateDiff('1404/01/01', '1404/01/10')
 const persianWeekDayFromDays = getPersianWeekDayFromDays(5)
-const remainDays = JSON.stringify(remainDayForSubscription(new Date(Date.now() + 86400000)), null, 2) // 1 day from now
+const remainDays = JSON.stringify(
+  remainDayForSubscription(new Date(Date.now() + 86400000)),
+  null,
+  2,
+) // 1 day from now
 const formattedDateTime = formatPersianDateTime(new Date())
 </script>
 
 <template>
-  <div class="p-8 space-y-4">
-    <h1 class="text-3xl font-bold mb-6">
+  <div class="space-y-4 p-8">
+    <h1 class="mb-6 text-3xl font-bold">
       Persian Date Utilities Demo
     </h1>
 
@@ -37,19 +41,30 @@ const formattedDateTime = formatPersianDateTime(new Date())
     </div>
 
     <div class="space-y-2">
-      <p><strong>persianDateDiff('1404/01/01', '1404/01/10'):</strong> {{ persianDateDiffValue }}</p>
+      <p>
+        <strong>persianDateDiff('1404/01/01', '1404/01/10'):</strong>
+        {{ persianDateDiffValue }}
+      </p>
     </div>
 
     <div class="space-y-2">
-      <p><strong>getPersianWeekDayFromDays(5):</strong> {{ persianWeekDayFromDays }}</p>
+      <p>
+        <strong>getPersianWeekDayFromDays(5):</strong>
+        {{ persianWeekDayFromDays }}
+      </p>
     </div>
 
     <div class="space-y-2">
-      <p><strong>remainDayForSubscription(tomorrow):</strong> {{ remainDays }}</p>
+      <p>
+        <strong>remainDayForSubscription(tomorrow):</strong> {{ remainDays }}
+      </p>
     </div>
 
     <div class="space-y-2">
-      <p><strong>formatPersianDateTime(new Date()):</strong> {{ formattedDateTime }}</p>
+      <p>
+        <strong>formatPersianDateTime(new Date()):</strong>
+        {{ formattedDateTime }}
+      </p>
     </div>
   </div>
 </template>

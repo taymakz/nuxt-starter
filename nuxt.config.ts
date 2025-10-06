@@ -18,9 +18,7 @@ export default defineNuxtConfig({
   ],
   css: ['~/assets/styles/app.css'],
   vite: {
-    plugins: [
-      tailwindcss(),
-    ],
+    plugins: [tailwindcss()],
   },
   dayjs: {
     plugins: ['relativeTime', 'timezone', 'weekday'],
@@ -61,6 +59,5 @@ export default defineNuxtConfig({
     '/date': {
       ssr: false,
     },
-
   },
 })

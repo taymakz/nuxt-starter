@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@/utils/cn'
 
@@ -11,7 +11,6 @@ const props = defineProps<{
   <kbd
     data-slot="kbd-group"
     :class="cn('inline-flex items-center gap-1', props.class)"
-    v-bind="$attrs"
   >
     <slot />
   </kbd>

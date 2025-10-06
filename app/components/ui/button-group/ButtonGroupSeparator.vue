@@ -1,21 +1,29 @@
-<script setup lang="ts">
+<script lang="ts" setup>
+import type { SeparatorProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
+import { reactiveOmit } from '@vueuse/core'
 import { Separator } from '@/components/ui/separator'
 import { cn } from '@/utils/cn'
 
-const props = defineProps<{
-  orientation?: 'horizontal' | 'vertical'
-  class?: HTMLAttributes['class']
-}>()
+const props = withDefaults(
+  defineProps<SeparatorProps & { class?: HTMLAttributes['class'] }>(),
+  {
+    orientation: 'vertical',
+  },
+)
+const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
   <Separator
     data-slot="button-group-separator"
-    :orientation="orientation || 'vertical'"
-    :class="cn(
-      'bg-input relative !m-0 self-stretch data-[orientation=vertical]:h-auto',
-      props.class,
-    )"
+    v-bind="delegatedProps"
+    :orientation="props.orientation"
+    :class="
+      cn(
+        'bg-input relative !m-0 self-stretch data-[orientation=vertical]:h-auto',
+        props.class,
+      )
+    "
   />
 </template>

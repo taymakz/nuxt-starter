@@ -2,7 +2,11 @@
 import type { HTMLAttributes } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { Eye, EyeOff } from 'lucide-vue-next'
-import { InputGroup, InputGroupButton, InputGroupInput } from '@/components/ui/input-group'
+import {
+  InputGroup,
+  InputGroupButton,
+  InputGroupInput,
+} from '@/components/ui/input-group'
 
 const props = defineProps<{
   defaultValue?: string | number
@@ -21,7 +25,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 
 const isVisible = ref(false)
 
-const inputType = computed(() => isVisible.value ? 'text' : 'password')
+const inputType = computed(() => (isVisible.value ? 'text' : 'password'))
 
 function toggleVisibility() {
   isVisible.value = !isVisible.value

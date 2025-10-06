@@ -61,40 +61,55 @@ export async function compressImage(
         ctx.drawImage(img, 0, 0, width, height)
 
         // Convert to blob to check size after resizing
-        canvas.toBlob(async (resizedBlob) => {
-          if (!resizedBlob) {
-            throw new Error('Failed to create resized blob')
-          }
+        canvas.toBlob(
+          async (resizedBlob) => {
+            if (!resizedBlob) {
+              throw new Error('Failed to create resized blob')
+            }
 
-          // If resized image is still too large, compress it
-          if (resizedBlob.size > maxSizeBytes) {
-            const compressedFile = await compressToTargetSize(canvas, format, quality, maxSizeKB, file.name)
-            resolve({
-              file: compressedFile,
-              originalSize,
-              compressedSize: compressedFile.size,
-              compressionRatio: Math.round(
-                (1 - compressedFile.size / originalSize) * 100,
-              ),
-              wasCompressed: true,
-            })
-          }
-          else {
-            // Resized image is small enough
-            const extension = format === 'jpeg' ? 'jpg' : format
-            const newFileName = file.name.replace(/\.[^/.]+$/, `.${extension}`)
-            const resizedFile = new File([resizedBlob], newFileName, { type: `image/${format}` })
-            resolve({
-              file: resizedFile,
-              originalSize,
-              compressedSize: resizedFile.size,
-              compressionRatio: Math.round(
-                (1 - resizedFile.size / originalSize) * 100,
-              ),
-              wasCompressed: true,
-            })
-          }
-        }, `image/${format}`, quality)
+            // If resized image is still too large, compress it
+            if (resizedBlob.size > maxSizeBytes) {
+              const compressedFile = await compressToTargetSize(
+                canvas,
+                format,
+                quality,
+                maxSizeKB,
+                file.name,
+              )
+              resolve({
+                file: compressedFile,
+                originalSize,
+                compressedSize: compressedFile.size,
+                compressionRatio: Math.round(
+                  (1 - compressedFile.size / originalSize) * 100,
+                ),
+                wasCompressed: true,
+              })
+            }
+            else {
+              // Resized image is small enough
+              const extension = format === 'jpeg' ? 'jpg' : format
+              const newFileName = file.name.replace(
+                /\.[^/.]+$/,
+                `.${extension}`,
+              )
+              const resizedFile = new File([resizedBlob], newFileName, {
+                type: `image/${format}`,
+              })
+              resolve({
+                file: resizedFile,
+                originalSize,
+                compressedSize: resizedFile.size,
+                compressionRatio: Math.round(
+                  (1 - resizedFile.size / originalSize) * 100,
+                ),
+                wasCompressed: true,
+              })
+            }
+          },
+          `image/${format}`,
+          quality,
+        )
       }
       catch (error) {
         reject(error)

@@ -1,41 +1,153 @@
 <script setup lang="ts">
-import { ArrowLeft, ArrowUpRight, Bell, Check, ChevronDown, Cloud, Copy, CreditCard, GitBranch, HelpCircle, Info, Loader2, Mail, Minus, Plus, RefreshCw, RotateCcw, Search, Star } from 'lucide-vue-next'
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  Bell,
+  Check,
+  ChevronDown,
+  Cloud,
+  Copy,
+  CreditCard,
+  GitBranch,
+  HelpCircle,
+  Info,
+  Loader2,
+  Mail,
+  Minus,
+  Plus,
+  RefreshCw,
+  RotateCcw,
+  Search,
+  Star,
+} from 'lucide-vue-next'
 import { ref } from 'vue'
 import { toast } from 'vue-sonner'
 
 // Import all UI components (alphabetically sorted)
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion'
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '~/components/ui/alert-dialog'
-import { AnimatedTabs, AnimatedTabsContent } from '~/components/ui/animated-tabs'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '~/components/ui/accordion'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '~/components/ui/alert-dialog'
+import {
+  AnimatedTabs,
+  AnimatedTabsContent,
+} from '~/components/ui/animated-tabs'
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
 import { ArtPlum, Grid, Spotlight } from '~/components/ui/backgrounds'
 import { Badge } from '~/components/ui/badge'
-import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '~/components/ui/breadcrumb'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+} from '~/components/ui/breadcrumb'
 import { Button } from '~/components/ui/button'
-import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from '~/components/ui/button-group'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card'
+import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
+} from '~/components/ui/button-group'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '~/components/ui/card'
 import { Checkbox } from '~/components/ui/checkbox'
 import DatepickerJalali from '~/components/ui/datepicker-jalali/DatepickerJalali.vue'
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '~/components/ui/dialog'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '~/components/ui/dropdown-menu'
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '~/components/ui/empty'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '~/components/ui/hover-card'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '~/components/ui/dialog'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '~/components/ui/dropdown-menu'
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from '~/components/ui/empty'
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from '~/components/ui/hover-card'
 import { Input, InputPassword } from '~/components/ui/input'
-import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from '~/components/ui/input-group'
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from '~/components/ui/input-group'
 import { InputOtp } from '~/components/ui/input-otp'
-import { Item, ItemActions, ItemContent, ItemDescription, ItemFooter, ItemGroup, ItemHeader, ItemMedia, ItemSeparator, ItemTitle } from '~/components/ui/item'
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemHeader,
+  ItemMedia,
+  ItemSeparator,
+  ItemTitle,
+} from '~/components/ui/item'
 import { Kbd, KbdGroup } from '~/components/ui/kbd'
 import { Label } from '~/components/ui/label'
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationNext, PaginationPrevious } from '~/components/ui/pagination'
-import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover'
+
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '~/components/ui/popover'
 import ResponsiveAlertDialog from '~/components/ui/responsive/AlertDialog.vue'
 import ResponsiveDialog from '~/components/ui/responsive/Dialog.vue'
 import { RestText } from '~/components/ui/rest-text'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '~/components/ui/select'
 import { Skeleton } from '~/components/ui/skeleton'
 import { Switch } from '~/components/ui/switch'
 import Textarea from '~/components/ui/textarea/Textarea.vue'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '~/components/ui/tooltip'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '~/components/ui/tooltip'
 
 const inputValue = ref('')
 const selectedDate = ref()
@@ -95,19 +207,22 @@ const models = [
   {
     name: 'v0-1.5-sm',
     description: 'Everyday tasks and UI generation.',
-    image: 'https://images.unsplash.com/photo-1650804068570-7fb2e3dbf888?q=80&w=640&auto=format&fit=crop',
+    image:
+      'https://images.unsplash.com/photo-1650804068570-7fb2e3dbf888?q=80&w=640&auto=format&fit=crop',
     credit: 'Valeria Reverdo on Unsplash',
   },
   {
     name: 'v0-1.5-lg',
     description: 'Advanced thinking or reasoning.',
-    image: 'https://images.unsplash.com/photo-1610280777472-54133d004c8c?q=80&w=640&auto=format&fit=crop',
+    image:
+      'https://images.unsplash.com/photo-1610280777472-54133d004c8c?q=80&w=640&auto=format&fit=crop',
     credit: 'Michael Oeser on Unsplash',
   },
   {
     name: 'v0-2.0-mini',
     description: 'Open Source model for everyone.',
-    image: 'https://images.unsplash.com/photo-1602146057681-08560aee8cde?q=80&w=640&auto=format&fit=crop',
+    image:
+      'https://images.unsplash.com/photo-1602146057681-08560aee8cde?q=80&w=640&auto=format&fit=crop',
     credit: 'Cherry Laithang on Unsplash',
   },
 ]
@@ -124,8 +239,8 @@ function showToast() {
 </script>
 
 <template>
-  <div class="p-8 space-y-8">
-    <h1 class="text-3xl font-bold mb-6">
+  <div class="space-y-8 p-8">
+    <h1 class="mb-6 text-3xl font-bold">
       UI Components Demo
     </h1>
 
@@ -234,7 +349,9 @@ function showToast() {
     <Card>
       <CardHeader>
         <CardTitle>Button Group</CardTitle>
-        <CardDescription>A container that groups related buttons together</CardDescription>
+        <CardDescription>
+          A container that groups related buttons together
+        </CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div class="space-y-2">
@@ -396,7 +513,12 @@ function showToast() {
       <CardContent class="space-y-4">
         <div class="space-y-2">
           <Label for="email">Email</Label>
-          <Input id="email" v-model="inputValue" type="email" placeholder="Enter your email" />
+          <Input
+            id="email"
+            v-model="inputValue"
+            type="email"
+            placeholder="Enter your email"
+          />
         </div>
         <div class="space-y-2">
           <Label for="password">Password</Label>
@@ -410,7 +532,7 @@ function showToast() {
           <Label for="disabled">Disabled Input</Label>
           <Input id="disabled" disabled placeholder="Disabled input" />
         </div>
-        <p class="text-sm text-muted-foreground">
+        <p class="text-muted-foreground text-sm">
           Current value: {{ inputValue }}
         </p>
       </CardContent>
@@ -420,7 +542,10 @@ function showToast() {
     <Card>
       <CardHeader>
         <CardTitle>Input Group</CardTitle>
-        <CardDescription>Display additional information or actions to an input or textarea</CardDescription>
+        <CardDescription>
+          Display additional information or actions to an input or
+          textarea
+        </CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div class="space-y-2">
@@ -499,11 +624,7 @@ function showToast() {
             <InputGroup>
               <InputGroupInput placeholder="https://x.com/shadcn" readonly />
               <InputGroupAddon align="inline-end">
-                <InputGroupButton
-                  aria-label="Copy"
-                  title="Copy"
-                  size="icon-xs"
-                >
+                <InputGroupButton aria-label="Copy" title="Copy" size="icon-xs">
                   <Copy />
                 </InputGroupButton>
               </InputGroupAddon>
@@ -524,7 +645,9 @@ function showToast() {
                   <p class="font-medium">
                     Your connection is not secure.
                   </p>
-                  <p>You should not enter any sensitive information on this site.</p>
+                  <p>
+                    You should not enter any sensitive information on this site.
+                  </p>
                 </PopoverContent>
               </Popover>
               <InputGroupAddon class="text-muted-foreground pl-1.5">
@@ -676,11 +799,12 @@ function showToast() {
               </InputGroupAddon>
             </InputGroup>
             <InputGroup>
-              <InputGroupInput id="user-email" placeholder="shadcn@vercel.com" />
+              <InputGroupInput
+                id="user-email"
+                placeholder="shadcn@vercel.com"
+              />
               <InputGroupAddon align="block-start">
-                <Label for="user-email" class="text-foreground">
-                  Email
-                </Label>
+                <Label for="user-email" class="text-foreground"> Email </Label>
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger as-child>
@@ -709,7 +833,10 @@ function showToast() {
     <Card>
       <CardHeader>
         <CardTitle>Item</CardTitle>
-        <CardDescription>A versatile component that you can use to display any content</CardDescription>
+        <CardDescription>
+          A versatile component that you can use to display any
+          content
+        </CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div class="space-y-2">
@@ -723,7 +850,9 @@ function showToast() {
               </ItemMedia>
               <ItemContent>
                 <ItemTitle>Default Item</ItemTitle>
-                <ItemDescription>This is a default item variant.</ItemDescription>
+                <ItemDescription>
+                  This is a default item variant.
+                </ItemDescription>
               </ItemContent>
               <ItemActions>
                 <Button variant="outline" size="sm">
@@ -737,7 +866,9 @@ function showToast() {
               </ItemMedia>
               <ItemContent>
                 <ItemTitle>Outline Item</ItemTitle>
-                <ItemDescription>This is an outline item variant.</ItemDescription>
+                <ItemDescription>
+                  This is an outline item variant.
+                </ItemDescription>
               </ItemContent>
               <ItemActions>
                 <Button variant="outline" size="sm">
@@ -773,7 +904,9 @@ function showToast() {
               </ItemMedia>
               <ItemContent>
                 <ItemTitle>Default Size</ItemTitle>
-                <ItemDescription>This is the default size item.</ItemDescription>
+                <ItemDescription>
+                  This is the default size item.
+                </ItemDescription>
               </ItemContent>
               <ItemActions>
                 <Button variant="outline" size="sm">
@@ -809,7 +942,9 @@ function showToast() {
               </ItemMedia>
               <ItemContent>
                 <ItemTitle>Mail</ItemTitle>
-                <ItemDescription>Check your inbox for new messages.</ItemDescription>
+                <ItemDescription>
+                  Check your inbox for new messages.
+                </ItemDescription>
               </ItemContent>
               <ItemActions>
                 <Button variant="outline" size="sm">
@@ -866,7 +1001,10 @@ function showToast() {
           <div class="grid w-full max-w-md gap-4">
             <Item>
               <ItemMedia variant="image">
-                <img src="https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?w=300&h=300&fit=crop&crop=face" alt="Sample">
+                <img
+                  src="https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?w=300&h=300&fit=crop&crop=face"
+                  alt="Sample"
+                >
               </ItemMedia>
               <ItemContent>
                 <ItemTitle>Sample Image</ItemTitle>
@@ -950,7 +1088,9 @@ function showToast() {
               </ItemMedia>
               <ItemContent>
                 <ItemTitle>Item with Header</ItemTitle>
-                <ItemDescription>This item has a custom header section.</ItemDescription>
+                <ItemDescription>
+                  This item has a custom header section.
+                </ItemDescription>
               </ItemContent>
               <ItemActions>
                 <Button variant="outline" size="sm">
@@ -976,9 +1116,7 @@ function showToast() {
                   <ItemDescription>Overview of your account and activity.</ItemDescription>
                 </ItemContent>
                 <ItemActions>
-                  <Button variant="outline" size="sm">
-                    Go
-                  </Button>
+                  <Button variant="outline" size="sm"> Go </Button>
                 </ItemActions>
               </a>
             </Item>
@@ -998,7 +1136,9 @@ function showToast() {
                   </ItemMedia>
                   <ItemContent>
                     <ItemTitle>Account</ItemTitle>
-                    <ItemDescription>Manage your account settings</ItemDescription>
+                    <ItemDescription>
+                      Manage your account settings
+                    </ItemDescription>
                   </ItemContent>
                   <ItemActions>
                     <Button variant="outline" size="sm">
@@ -1032,14 +1172,15 @@ function showToast() {
           </h3>
           <div class="grid w-full max-w-md gap-4">
             <ItemGroup>
-              <Item
-                v-for="(person, index) in people"
-                :key="person.username"
-              >
+              <Item v-for="(person, index) in people" :key="person.username">
                 <ItemMedia>
                   <Avatar>
                     <AvatarImage :src="person.avatar" class="grayscale" />
-                    <AvatarFallback>{{ person.username.charAt(0) }}</AvatarFallback>
+                    <AvatarFallback>
+                      {{
+                        person.username.charAt(0)
+                      }}
+                    </AvatarFallback>
                   </Avatar>
                 </ItemMedia>
                 <ItemContent class="gap-1">
@@ -1077,13 +1218,15 @@ function showToast() {
                     <img
                       :src="`https://avatar.vercel.sh/${encodeURIComponent(song.title)}`"
                       :alt="song.title"
-                      class="w-8 h-8 object-cover grayscale rounded-sm"
+                      class="h-8 w-8 rounded-sm object-cover grayscale"
                     >
                   </ItemMedia>
                   <ItemContent>
                     <ItemTitle class="line-clamp-1">
                       {{ song.title }} -
-                      <span class="text-muted-foreground">{{ song.album }}</span>
+                      <span class="text-muted-foreground">{{
+                        song.album
+                      }}</span>
                     </ItemTitle>
                     <ItemDescription>{{ song.artist }}</ItemDescription>
                   </ItemContent>
@@ -1102,11 +1245,7 @@ function showToast() {
           </h3>
           <div class="grid w-full max-w-xl gap-4">
             <ItemGroup class="grid grid-cols-3 gap-4">
-              <Item
-                v-for="model in models"
-                :key="model.name"
-                variant="outline"
-              >
+              <Item v-for="model in models" :key="model.name" variant="outline">
                 <ItemHeader>
                   <img
                     :src="model.image"
@@ -1129,7 +1268,9 @@ function showToast() {
     <Card>
       <CardHeader>
         <CardTitle>Kbd</CardTitle>
-        <CardDescription>Used to display textual user input from keyboard</CardDescription>
+        <CardDescription>
+          Used to display textual user input from keyboard
+        </CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div class="space-y-2">
@@ -1240,7 +1381,9 @@ function showToast() {
     <Card>
       <CardHeader>
         <CardTitle>Empty</CardTitle>
-        <CardDescription>Use the Empty component to display an empty state</CardDescription>
+        <CardDescription>
+          Use the Empty component to display an empty state
+        </CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div class="space-y-2">
@@ -1292,7 +1435,9 @@ function showToast() {
             Background
           </h3>
           <div class="grid w-full max-w-md gap-4">
-            <Empty class="from-muted/50 to-background h-full bg-gradient-to-b from-30%">
+            <Empty
+              class="from-muted/50 to-background h-full bg-gradient-to-b from-30%"
+            >
               <EmptyHeader>
                 <EmptyMedia variant="icon">
                   <Bell />
@@ -1330,8 +1475,8 @@ function showToast() {
                 </EmptyMedia>
                 <EmptyTitle>User Offline</EmptyTitle>
                 <EmptyDescription>
-                  This user is currently offline. You can leave a message to notify them
-                  or try again later.
+                  This user is currently offline. You can leave a message to
+                  notify them or try again later.
                 </EmptyDescription>
               </EmptyHeader>
               <EmptyContent>
@@ -1351,9 +1496,14 @@ function showToast() {
             <Empty>
               <EmptyHeader>
                 <EmptyMedia>
-                  <div class="[&_[data-slot=avatar]]:ring-background flex -space-x-2 [&_[data-slot=avatar]]:size-12 [&_[data-slot=avatar]]:ring-2 [&_[data-slot=avatar]]:grayscale">
+                  <div
+                    class="[&_[data-slot=avatar]]:ring-background flex -space-x-2 [&_[data-slot=avatar]]:size-12 [&_[data-slot=avatar]]:ring-2 [&_[data-slot=avatar]]:grayscale"
+                  >
                     <Avatar>
-                      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                      <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                      />
                       <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
                     <Avatar>
@@ -1411,7 +1561,8 @@ function showToast() {
                   </InputGroupAddon>
                 </InputGroup>
                 <EmptyDescription>
-                  Need help? <a href="#" class="cursor-pointer">Contact support</a>
+                  Need help?
+                  <a href="#" class="cursor-pointer">Contact support</a>
                 </EmptyDescription>
               </EmptyContent>
             </Empty>
@@ -1470,7 +1621,7 @@ function showToast() {
         </div>
         <div class="flex items-center space-x-4">
           <Skeleton class="h-12 w-12 rounded-full" />
-          <div class="space-y-2 flex-1">
+          <div class="flex-1 space-y-2">
             <Skeleton class="h-4 w-full" />
             <Skeleton class="h-4 w-3/4" />
           </div>
@@ -1486,7 +1637,10 @@ function showToast() {
       </CardHeader>
       <CardContent class="flex gap-4">
         <Avatar>
-          <AvatarImage src="https://github.com/radix-vue.png" alt="@radix-vue" />
+          <AvatarImage
+            src="https://github.com/radix-vue.png"
+            alt="@radix-vue"
+          />
           <AvatarFallback>RV</AvatarFallback>
         </Avatar>
         <Avatar>
@@ -1512,8 +1666,8 @@ function showToast() {
             <AlertDialogHeader>
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
               <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete your account
-                and remove your data from our servers.
+                This action cannot be undone. This will permanently delete your
+                account and remove your data from our servers.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -1569,7 +1723,10 @@ function showToast() {
     <Card>
       <CardHeader>
         <CardTitle>Responsive Dialog</CardTitle>
-        <CardDescription>Dialog that adapts to screen size - modal on desktop, bottom sheet on mobile</CardDescription>
+        <CardDescription>
+          Dialog that adapts to screen size - modal on desktop, bottom sheet on
+          mobile
+        </CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div class="space-y-2">
@@ -1577,7 +1734,7 @@ function showToast() {
             Basic Dialog
           </h3>
           <div class="flex flex-wrap gap-4">
-            <ResponsiveDialog >
+            <ResponsiveDialog>
               <template #trigger>
                 <Button variant="outline">
                   Open Dialog
@@ -1596,7 +1753,11 @@ function showToast() {
                 </div>
                 <div class="space-y-2">
                   <Label for="email">Email</Label>
-                  <Input id="email" type="email" placeholder="Enter your email" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                  />
                 </div>
               </div>
               <template #footer>
@@ -1674,7 +1835,10 @@ function showToast() {
     <Card>
       <CardHeader>
         <CardTitle>Responsive Alert Dialog</CardTitle>
-        <CardDescription>Alert dialog that adapts to screen size - modal on desktop, bottom sheet on mobile</CardDescription>
+        <CardDescription>
+          Alert dialog that adapts to screen size - modal on desktop, bottom
+          sheet on mobile
+        </CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div class="space-y-2">
@@ -1750,13 +1914,15 @@ function showToast() {
           <AccordionItem value="item-2">
             <AccordionTrigger>Is it styled?</AccordionTrigger>
             <AccordionContent>
-              Yes. It comes with default styles that matches the other components' aesthetic.
+              Yes. It comes with default styles that matches the other
+              components' aesthetic.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
             <AccordionTrigger>Is it animated?</AccordionTrigger>
             <AccordionContent>
-              Yes. It's animated by default, but you can disable it if you prefer.
+              Yes. It's animated by default, but you can disable it if you
+              prefer.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -1800,21 +1966,21 @@ function showToast() {
         <AnimatedTabs v-model="activeTab" :tabs="tabs" />
         <AnimatedTabsContent :active-tab="activeTab" :tabs="tabs">
           <template #tab1>
-            <div class="p-4 bg-accent/20 rounded-lg">
+            <div class="bg-accent/20 rounded-lg p-4">
               <p class="text-sm">
                 This is the content for Tab 1
               </p>
             </div>
           </template>
           <template #tab2>
-            <div class="p-4 bg-accent/20 rounded-lg">
+            <div class="bg-accent/20 rounded-lg p-4">
               <p class="text-sm">
                 This is the content for Tab 2
               </p>
             </div>
           </template>
           <template #tab3>
-            <div class="p-4 bg-accent/20 rounded-lg">
+            <div class="bg-accent/20 rounded-lg p-4">
               <p class="text-sm">
                 This is the content for Tab 3
               </p>
@@ -1831,7 +1997,7 @@ function showToast() {
         <CardDescription>Decorative background components</CardDescription>
       </CardHeader>
       <CardContent class="space-y-4">
-        <div class="relative h-32 rounded-lg overflow-hidden">
+        <div class="relative h-32 overflow-hidden rounded-lg">
           <Grid class="absolute inset-0" />
           <div class="relative z-10 p-4">
             <p class="text-white">
@@ -1839,15 +2005,15 @@ function showToast() {
             </p>
           </div>
         </div>
-        <div class="relative h-32 rounded-lg overflow-hidden border">
-          <ArtPlum class="!absolute w-full h-full" />
+        <div class="relative h-32 overflow-hidden rounded-lg border">
+          <ArtPlum class="!absolute h-full w-full" />
           <div class="relative z-10 p-4">
             <p class="text-white">
               Art Plum Background
             </p>
           </div>
         </div>
-        <div class="relative h-32 rounded-lg overflow-hidden  border">
+        <div class="relative h-32 overflow-hidden rounded-lg border">
           <Spotlight class="absolute inset-0" />
           <div class="relative z-10 p-4">
             <p class="text-white">
@@ -1866,7 +2032,7 @@ function showToast() {
       </CardHeader>
       <CardContent>
         <Calendar v-model="selectedDate" />
-        <p class="text-sm text-muted-foreground mt-2">
+        <p class="text-muted-foreground mt-2 text-sm">
           Selected date: {{ selectedDate }}
         </p>
       </CardContent>
@@ -1880,7 +2046,7 @@ function showToast() {
       </CardHeader>
       <CardContent>
         <ColorPicker v-model="selectedColor" />
-        <p class="text-sm text-muted-foreground mt-2">
+        <p class="text-muted-foreground mt-2 text-sm">
           Selected color: {{ selectedColor }}
         </p>
       </CardContent>
@@ -1894,7 +2060,7 @@ function showToast() {
       </CardHeader>
       <CardContent>
         <DatepickerJalali v-model="jalaliDate" />
-        <p class="text-sm text-muted-foreground mt-2">
+        <p class="text-muted-foreground mt-2 text-sm">
           Selected Jalali date: {{ jalaliDate }}
         </p>
       </CardContent>
@@ -1990,21 +2156,29 @@ function showToast() {
           <PopoverContent>
             <div class="grid gap-4">
               <div class="space-y-2">
-                <h4 class="font-medium leading-none">
+                <h4 class="leading-none font-medium">
                   Dimensions
                 </h4>
-                <p class="text-sm text-muted-foreground">
+                <p class="text-muted-foreground text-sm">
                   Set the dimensions for the layer.
                 </p>
               </div>
               <div class="grid gap-2">
                 <div class="grid grid-cols-3 items-center gap-4">
                   <Label html-for="width">Width</Label>
-                  <Input id="width" default-value="100%" class="col-span-2 h-8" />
+                  <Input
+                    id="width"
+                    default-value="100%"
+                    class="col-span-2 h-8"
+                  />
                 </div>
                 <div class="grid grid-cols-3 items-center gap-4">
                   <Label html-for="height">Height</Label>
-                  <Input id="height" default-value="25px" class="col-span-2 h-8" />
+                  <Input
+                    id="height"
+                    default-value="25px"
+                    class="col-span-2 h-8"
+                  />
                 </div>
               </div>
             </div>
@@ -2021,7 +2195,7 @@ function showToast() {
       </CardHeader>
       <CardContent>
         <RangeCalendar v-model="dateRange" />
-        <p class="text-sm text-muted-foreground mt-2">
+        <p class="text-muted-foreground mt-2 text-sm">
           Selected range: {{ dateRange }}
         </p>
       </CardContent>

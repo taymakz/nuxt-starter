@@ -1,17 +1,20 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { EmptyMediaVariants } from '.'
 import { cn } from '@/utils/cn'
+import { emptyMediaVariants } from '.'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']
+  variant?: EmptyMediaVariants['variant']
 }>()
 </script>
 
 <template>
   <div
-    data-slot="empty-title"
-    :class="cn('text-lg font-medium tracking-tight', props.class)"
-    v-bind="$attrs"
+    data-slot="empty-icon"
+    :data-variant="variant"
+    :class="cn(emptyMediaVariants({ variant }), props.class)"
   >
     <slot />
   </div>
